@@ -1,12 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpRequest, HttpResponse
 from . import forms
+from .models import Product
 
 # Create your views here.
 
 
 def index(request: HttpRequest) -> HttpResponse:
-    return render(request, "product/index.html")
+    products = Product.objects.all()
+    # datos = {"productos": products}
+    return render(request, "product/index.html", {"products": products})
 
 
 def create_product(request):

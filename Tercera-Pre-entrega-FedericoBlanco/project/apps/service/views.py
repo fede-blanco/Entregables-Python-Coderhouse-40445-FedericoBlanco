@@ -1,12 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpRequest, HttpResponse
 from . import forms
+from .models import Service
 
 # Create your views here.
 
 
 def index(request: HttpRequest) -> HttpResponse:
-    return render(request, "service/index.html")
+    services = Service.objects.all()
+    return render(request, "service/index.html", {"services": services})
 
 
 def create_service(request):
