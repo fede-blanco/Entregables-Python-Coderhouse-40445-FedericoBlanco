@@ -5,5 +5,6 @@ from . import views
 
 urlpatterns = [
     path("", views.index, name="index"),
+    path("create-product", views.create_product, name="create-product"),
 ]
 urlpatterns += staticfiles_urlpatterns()

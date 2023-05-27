@@ -13,21 +13,20 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'home/css/styles.css' %}" rel="stylesheet" />
     </head>
-    <body>
+    <body style="min-height: 100vh; display: flex; flex-direction: column;justify-content: space-between;">
 
-        {% include 'home/navbar.html' %}
+        <!-- Navbar -->
+            {% include 'home/navbar.html' %}
 
         <!-- Page Content-->
-        <div class="container px-4 px-lg-5">
-
+        <div class="container px-4 px-lg-5" style="flex-grow: 1; position: relative;">
         {% block content %}
             
         {% endblock content %}
-
         </div>
 
         <!-- Footer-->
-        {% include 'home/footer.html' %}
+            {% include 'home/footer.html' %}
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
