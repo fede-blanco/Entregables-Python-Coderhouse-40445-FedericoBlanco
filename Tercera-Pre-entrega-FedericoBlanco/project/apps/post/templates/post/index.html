@@ -1,7 +1,24 @@
-{% extends 'home/base.html' %}
-
-{% block content %}
-    <h1>Post</h1>
-    <!-- Post content -->
-    <a href="{% url 'post:create-post' %}" style="position: absolute; bottom: 0px;">Ir al formulario de "Productos"</a>
+{% extends 'home/base.html' %} {% block content %}
+<div
+  style="
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  "
+>
+  <h1 style="padding: 1rem;">Posts</h1>
+  <!-- Post content -->
+  <button
+    type="button"
+    class="btn btn-dark"
+    style="position: absolute; bottom: 0px; margin: 1rem"
+  >
+    <a
+      href="{% url 'post:create-post' %}"
+      style="text-decoration: none; color: #fff"
+      >Ir al formulario de "Posts"</a
+    >
+  </button>
+</div>
 {% endblock content %}
