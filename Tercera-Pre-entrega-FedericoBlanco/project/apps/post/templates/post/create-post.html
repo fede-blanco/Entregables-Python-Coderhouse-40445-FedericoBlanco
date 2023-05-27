@@ -4,10 +4,10 @@
 {% block content %}
 <div style="display: flex; flex-direction: column; align-items: center; padding: 1rem;"> 
     <h1>Crear Post</h1>
-    <form method="post" style="display: flex; flex-direction: column; width:fit-content;">
-        {% csrf_token %}
-        {{form}}
-        <input type="submit" class="btn btn-primary" value="Crear Post" style="margin: 1rem">
-    </form>
+        <form method="post" style="display: flex; flex-direction: column; width:100vw; max-width: 500px; padding: 1rem;">
+            {% csrf_token %}
+            {{form}}
+            <input type="submit" class="btn btn-primary" value="Crear Post" style="margin: 1rem">
+        </form>
 </div>
 {% endblock content %}
