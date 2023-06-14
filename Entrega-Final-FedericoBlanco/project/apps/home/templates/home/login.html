@@ -1,0 +1,15 @@
+{% extends 'home/base.html' %}
+
+{% block content   %}
+
+<h3 style="margin-top: 1rem;">Iniciar sesión</h3>
+
+<form method="post" style="margin-top: 2rem;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="d-grid gap-3">
+        <button type="submit" class="btn btn-success">Iniciar sesión</button>
+    </div>
+</form>
+
+{% endblock content    %}

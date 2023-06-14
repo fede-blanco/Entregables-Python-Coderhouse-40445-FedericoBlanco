@@ -1,0 +1,68 @@
+{% extends 'home/base.html' %} {% load static %} {% block content %}
+
+<!-- Heading Row-->
+<div class="row gx-4 gx-lg-5 align-items-center my-5">
+
+
+    {% if user.is_authenticated %}
+        <h3>Bienvenido {{ user.username }}</h3>
+
+        <!-- {% if user.vendedor.avatar.url  %}
+            <img src="{{ user.vendedor.avatar.url}}" alt="avatar" style="height: 50px;">
+        {% endif %} -->
+
+        {% if user.is_staff %}
+        <p><a href="{% url 'admin:index' %}">Panel de Administración</a></p>
+        <p><a href="{% url 'home:register' %}">Registrar nuevo usuario</a></p>
+        {% endif %}
+
+    {% endif %}
+
+
+  <div class="col-lg-7">
+    <img
+      class="img-fluid rounded mb-4 mb-lg-0"
+      src="{% static 'home/img/image-extra-1.jpg' %}"
+      alt="Imagen de inicio"
+    />
+  </div>
+  <div class="col-lg-5">
+    <h1 class="font-weight-light">Cobre Vitro</h1>
+    <p>
+      ¡Bienvenido a Cobre Vitro, el hogar de la belleza en vidrio! Nos
+      enorgullece presentarte un emprendimiento apasionado y creativo dedicado
+      al arte del vitraux. Con más de una década de experiencia, combinamos la
+      destreza artesanal con la innovación contemporánea para crear obras
+      maestras únicas en vidrio. Nuestro equipo de expertos artesanos trabaja
+      con meticulosa precisión para dar vida a tus ideas y transformar tu
+      espacio en un oasis de luz y color. Ya sea que busques una pieza
+      personalizada o quieras explorar nuestra cautivadora colección, en Cobre
+      Vitro encontrarás el equilibrio perfecto entre tradición y modernidad.
+      Descubre la magia del vitraux con nosotros y déjanos iluminar tu mundo.
+    </p>
+    <button
+      type="button"
+      class="btn btn-dark"
+    >
+      <a
+        href="{% url 'service:index' %}"
+        style="text-decoration: none; color: #fff"
+        >Mira los servicios!</a
+      >
+    </button>
+  </div>
+</div>
+<!-- Call to Action-->
+<div class="card text-white bg-secondary my-5 py-4 text-center">
+    <a href="{% url 'product:product_list' %}" style="text-decoration: none; ">
+        <div class="card-body">
+          <p class="text-white m-0" style="font-size: 2rem;">
+            Presiona aqui para ver todos los productos!
+          </p>
+        </div>
+    </a>
+</div>
+<!-- Content Row-->
+
+
+{% endblock content %}

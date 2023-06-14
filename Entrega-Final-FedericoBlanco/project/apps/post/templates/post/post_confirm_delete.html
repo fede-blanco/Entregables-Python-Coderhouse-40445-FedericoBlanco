@@ -1,0 +1,20 @@
+{% extends 'post/index.html' %}
+
+
+<h3 class="pb-lg-3">
+    Eliminación de Posts
+</h3>
+
+{% block content_post %}
+
+    <p class="fs-5 fst-italic">¿Confirmas eliminar "{{ object }}"?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="d-grid gap-3">
+            <button type="submit" class="btn btn-danger">Confirmar</button>
+            {% include 'post/index_back.html' %}
+        </div>
+    </form>
+
+{% endblock content_post %}

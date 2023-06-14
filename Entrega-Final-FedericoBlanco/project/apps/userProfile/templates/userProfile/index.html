@@ -1,0 +1,68 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+<div
+style="
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  padding-bottom: 4rem;
+"> 
+    <h1 style="padding: 1rem;">User profile</h1>
+
+    {% block content_userProfile %}
+        
+    <!-- <h3 class="pb-lg-3">
+        User Profile
+    </h3> -->
+
+
+
+    <div class="card mb-3" style="max-width: 100%; padding: 0">
+        <div class="row g-0">
+          <div class="col-md-5" style="display: flex">
+            <img
+            {% if profile.image%}
+                src="{{profile.image.url}}"
+                {% else %}
+                src="https://media.istockphoto.com/id/621109162/es/foto/close-up-concepto-de-tarjeta-de-felicitaci%C3%B3n-del-tesoro-de-pecho-vintage-abierto.jpg?s=612x612&w=0&k=20&c=dtILFNpuBp4AxBDxaYVcGOg1sWLd2p3DHRqdmSWyHtw="
+            {% endif %}
+              class="img-fluid rounded-start"
+              style="max-height: 70vh;"
+              alt="Profile picture"
+            />
+          </div>
+          <div class="col-md-7">
+            <div class="card-body" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%; ">
+                <div style="display: flex; flex-direction: column; justify-content: space-between;height: 100%">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h4 class="card-title"><span style="text-decoration: underline;">nombre de usuario:</span> {{profile.username}}</h4>
+                        <a href="{% url 'userProfile:userProfile_update' profile.id %}" class="btn btn-primary">Actualizar</a>
+                    </div>
+                    <!-- <p class="card-text">contenido</p> -->
+                    <p style=" margin-bottom: 0;"><strong style="text-decoration: underline;">Nombre:</strong></p>
+                    <p class="card-text" style="margin-left: 2rem;">{{ profile.first_name|capfirst }}</p>
+                    <p style=" margin-bottom: 0;"><strong style="text-decoration: underline;">Apellido:</strong></p>
+                    <p class="card-text" style="margin-left: 2rem;">{{ profile.last_name|capfirst }}</p>
+                    <p style=" margin-bottom: 0;"><strong style="text-decoration: underline;">Descripción:</strong></p>
+                    <p class="card-text" style="margin-left: 2rem;">{{ profile.description }}</p>
+                    <p style=" margin-bottom: 0;"><strong style="text-decoration: underline;">Email:</strong></p>
+                    <p class="card-text" style="margin-left: 2rem;">{{ profile.email }}</p>
+                    <p style=" margin-bottom: 0;"><strong style="text-decoration: underline;">Website:</strong></p>
+                    <p class="card-text" style="margin-left: 2rem;">{{ profile.website }}</p>
+                    <p style=" margin-bottom: 0;"><strong style="text-decoration: underline;">Fecha de creación:</strong></p>
+                    <p class="card-text" style="margin-left: 2rem;">{{ profile.date }}</p>
+                    <p style=" margin-bottom: 0;"><strong style="text-decoration: underline;">Última actualización:</strong></p>
+                    <p class="card-text" style="margin-left: 2rem;">{{ profile.last_actualization }}</p>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    {% endblock content_userProfile %}
+
+</div>
+{% endblock content %}

@@ -1,0 +1,58 @@
+{% extends 'service/index.html' %}
+
+
+{% block content_service %}
+
+<div class="row gx-4 gx-lg-5" style="display: flex;flex-direction: row; flex-wrap: wrap; justify-content: space-around;">
+    <h3>Lista de servicios</h3>
+
+
+    {% if object_list %}
+
+        <!-- Sirve para buscar categorías por nombre. Se pasa a la variable consulta de la vista. -->
+        <div class="py-lg-4">
+            <form action="{% url 'service:service_list' %}" method="get">
+                <input name="consulta" type="text" class="form-control" placeholder="Buscar...">
+            </form>
+        </div>
+
+    {% for service in object_list %}
+
+    <div class="card" style="width: 22rem; padding: 0rem; margin: 1rem;">
+        <img
+        {% if service.image%}
+                src="{{service.image.url}}"
+                {% else %}
+                src="https://media.istockphoto.com/id/621109162/es/foto/close-up-concepto-de-tarjeta-de-felicitaci%C3%B3n-del-tesoro-de-pecho-vintage-abierto.jpg?s=612x612&w=0&k=20&c=dtILFNpuBp4AxBDxaYVcGOg1sWLd2p3DHRqdmSWyHtw="
+            {% endif %}
+         class="card-img-top" alt="example">
+        <div class="card-body" style="display: flex; flex-direction: column; justify-content: space-between">
+            <div style="padding-bottom: 1rem;">
+                <h5 class="card-title">{{service.name}}</h5>
+                <p class="card-text">{{service.description}}</p>
+                <p class="card-text"  style="text-align: end;"><strong>$ {{service.price}}</strong></p>
+            </div>
+          <div style="text-align: center;">
+            <a href="{% url 'service:service_detail' service.id %}" class="btn btn-secondary">Ver detalle</a>
+            {% if user.is_staff %}
+            <a href="{% url 'service:service_update' service.id %}" class="btn btn-primary">Actualizar</a>
+            <a href="{% url 'service:service_delete' service.id %}" class="btn btn-danger">Eliminar</a>
+            {% endif %}
+        </div>
+        </div>
+      </div>
+
+    {% endfor %}
+
+    {% else %}
+      <p class="fs-4 fst-italic">No hay registros ingresados</p>
+    {% endif %}
+
+    
+
+  </div>
+
+<div class="d-grid gap-3">
+    {% include 'service/index_back.html' %}
+</div>
+{% endblock content_service %}

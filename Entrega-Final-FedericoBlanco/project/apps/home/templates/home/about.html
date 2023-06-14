@@ -1,0 +1,60 @@
+{% extends 'home/base.html' %}
+{% load static %} 
+
+{% block content %}
+
+    <!-- Heading Row-->
+<div class="row gx-4 gx-lg-5 align-items-center my-5">
+    <div class="col-lg-7">
+        <h1 class="font-weight-light">Federico Blanco</h1>
+        <p>
+            Mi nombre es <strong>Federico Blanco</strong>, tengo 29 años y este es <strong>mi primer proyecto en Python</strong>.
+        </p>
+        <p>
+            Tengo conocimiento de front-end con <strong>Javascript</strong>, <strong>React</strong> y <strong>Nextjs</strong> y actualmente estoy haciendo el curso de back-end con <strong>Nodejs</strong> con el fin de tener una visión mas amplia de todo lo que comprende el mundo de hacer aplicaciones funcionales, que brinden un valor real tanto al cliente como al usuario y sobre los inconvenientes y limitaciones que podrian surgir en el proceso.
+             <!-- tanto en la creación de una interface de usuario atractiva e innovadra, utilizando las últimas metodologías como en el proceso de escalabilidad de los servidores, utilizando buenas practicas que lo permitan y eligiendo los servicios de terceros que sean mas adecuados para el proyecto. -->
+        </p>
+        <p>
+            Elegí este curso de <strong>Python</strong> para introducirme en este potente lenguaje que es ampliamente utilizado en el rubro de la <strong>inteligencia artificial</strong> que, en mi opinión, va a ocupar un papel importante en el futuro cercano.
+        </p>
+        <h4 class="font-weight-light">Este proyecto</h4>
+        <p>
+            Para este proyecto <strong>elegí hacer un sitio con un estilo de blog</strong> donde se puedan encontrar los <strong>productos y servicios</strong> ofrecidos por el negocio ademas de tener una <strong>sección "posts"</strong> donde haya posts con información interesante al respecto del rubro del negocio que pueda ser de utilidad o entretenimiento del usuario.
+        </p>
+        <!-- <p>
+            <strong>La temática esta basada en el emprendimiento de vitraux de una amiga.</strong>
+        </p> -->
+        <button
+        type="button"
+        class="btn btn-dark"
+        >
+        <a
+        href="https://github.com/fede-blanco"
+        target="_blank"
+        rel="noreferrer"
+        style="text-decoration: none; color: #fff"
+        >Ir a github</a
+        >
+    </button>
+</div>
+<div class="col-lg-5">
+  <img
+    class="img-fluid rounded mb-4 mb-lg-0"
+    src="{% static 'home/img/fede-selfie-3.jpg' %}"
+    alt="Imagen de inicio"
+  />
+</div>
+  </div>
+  <!-- Call to Action-->
+  <!-- <div class="card text-white bg-secondary my-5 py-4 text-center">
+      <a href="{% url 'product:product_list' %}" style="text-decoration: none; ">
+          <div class="card-body">
+            <p class="text-white m-0" style="font-size: 2rem;">
+              Presiona aqui para ver todos los productos!
+            </p>
+          </div>
+      </a>
+  </div> -->
+  <!-- Content Row-->
+    
+{% endblock content %}

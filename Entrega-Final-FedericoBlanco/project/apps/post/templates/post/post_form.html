@@ -1,0 +1,35 @@
+{% extends 'post/index.html' %} {% block content_post %}
+<div
+  style="
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  "
+>
+  <h1>Crear Post</h1>
+  <form
+    method="post"
+    enctype="multipart/form-data"
+    style="
+      display: flex;
+      flex-direction: column;
+      width: 100vw;
+      max-width: 500px;
+      padding: 1rem;
+    "
+  >
+    {% csrf_token %} {{form}}
+    <input
+      type="submit"
+      class="btn btn-primary"
+      value="Guardar"
+      style="margin: 1rem"
+    />
+  </form>
+</div>
+
+<div class="d-grid gap-3">
+    {% include 'post/index_back.html' %}
+</div>
+{% endblock content_post %}

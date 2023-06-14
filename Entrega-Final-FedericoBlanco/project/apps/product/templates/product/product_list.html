@@ -1,0 +1,58 @@
+{% extends 'product/index.html' %}
+
+
+{% block content_product %}
+<div class="row gx-4 gx-lg-5" style="display: flex;flex-direction: row; flex-wrap: wrap; justify-content: space-around;">
+    <h3>Lista de productos</h3>
+
+    {% if object_list %}
+        
+                <!-- Sirve para buscar categorías por nombre. Se pasa a la variable consulta de la vista. -->
+                <div class="py-lg-4">
+                    <form action="{% url 'product:product_list' %}" method="get">
+                        <input name="consulta" type="text" class="form-control" placeholder="Buscar...">
+                    </form>
+                </div>
+
+                {% for product in object_list %}
+    <div class="card" style="width: 22rem; padding: 0rem; margin: 1rem;">
+        <img
+        {% if product.image%}
+                src="{{product.image.url}}"
+                {% else %}
+                src="https://media.istockphoto.com/id/621109162/es/foto/close-up-concepto-de-tarjeta-de-felicitaci%C3%B3n-del-tesoro-de-pecho-vintage-abierto.jpg?s=612x612&w=0&k=20&c=dtILFNpuBp4AxBDxaYVcGOg1sWLd2p3DHRqdmSWyHtw="
+        {% endif %}
+        class="card-img-top img-fluid" alt="example">
+        <div class="card-body" style="display: flex; flex-direction: column; justify-content: space-between">
+            <div style="padding-bottom: 1rem;">
+                <h5 class="card-title">{{product.name}}</h5>
+                <p class="card-text">{{product.description}}</p>
+                <p class="card-text" style="text-align: end;"><strong>$ {{product.price}}</strong></p>
+            </div>
+          <div style="text-align: center;">
+              <a href="{% url 'product:product_detail' product.id %}" class="btn btn-secondary">Ver detalle</a>
+              {% if user.is_staff %}
+              <a href="{% url 'product:product_update' product.id %}" class="btn btn-primary">Actualizar</a>
+              <a href="{% url 'product:product_delete' product.id %}" class="btn btn-danger">Eliminar</a>
+              {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+
+
+
+    {% else %}
+        <p class="fs-4 fst-italic">No hay registros ingresados</p>
+    {% endif %}
+
+
+    
+
+  </div>
+
+
+<div class="d-grid gap-3">
+    {% include 'product/index_back.html' %}
+</div>
+{% endblock content_product %}

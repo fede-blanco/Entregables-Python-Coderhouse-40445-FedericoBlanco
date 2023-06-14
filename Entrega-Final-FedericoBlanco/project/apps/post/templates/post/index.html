@@ -1,0 +1,36 @@
+{% extends 'home/base.html' %} {% block content %}
+<div
+style="
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  padding-bottom: 4rem;
+"
+>
+  <h1 style="padding: 1rem;">Posts</h1>
+  <!-- Post content -->
+
+  {% block content_post %}
+
+  <!-- <h3 class="pb-lg-3">
+    Posteos
+</h3> -->
+<div style="display: flex; justify-content: center; gap: 2rem;">
+
+    <div class="d-grid gap-3">
+        <a href="{% url 'post:post_list' %}" class="btn btn-primary" style="min-height: 15vh; min-width: 20vw; display:flex; justify-content:center; align-items: center; font-size:2rem">Listar</a> <br>
+    </div>
+    {% if user.is_staff %}
+    <div class="d-grid gap-3">
+        <a href="{% url 'post:post_create' %}" class="btn btn-primary" style="min-height: 15vh; min-width: 20vw; display:flex; justify-content:center; align-items: center; font-size:2rem">Crear Post</a> <br>
+    </div>
+    {% endif %}
+</div>
+
+    
+  {% endblock content_post %}
+
+
+</div>
+{% endblock content %}

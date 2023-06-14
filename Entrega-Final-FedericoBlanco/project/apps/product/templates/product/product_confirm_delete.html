@@ -1,0 +1,20 @@
+{% extends 'product/index.html' %}
+
+
+<h3 class="pb-lg-3">
+    Eliminación de Productos
+</h3>
+
+{% block content_product %}
+
+    <p class="fs-5 fst-italic">¿Confirmas eliminar "{{ object }}"?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="d-grid gap-3">
+            <button type="submit" class="btn btn-danger">Confirmar</button>
+            {% include 'product/index_back.html' %}
+        </div>
+    </form>
+
+{% endblock content_product %}

@@ -1,0 +1,76 @@
+{% extends 'post/index.html' %} 
+
+{% block content_post %}
+    
+<div
+  class="row gx-4 gx-lg-5"
+  style="
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  "
+>
+  <h3>Lista de posteos</h3>
+
+  {% if object_list %}
+
+    <!-- Sirve para buscar categorías por nombre. Se pasa a la variable consulta de la vista. -->
+    <div class="py-lg-4">
+        <form action="{% url 'post:post_list' %}" method="get">
+            <input name="consulta" type="text" class="form-control" placeholder="Buscar...">
+        </form>
+    </div>
+
+    {% for post in object_list %}
+
+  <div class="card mb-3" style="max-width: 100%; padding: 0; margin-top: 2rem;
+  ">
+    <div class="row g-0">
+      <div class="col-md-5" style="display: flex">
+        <img
+        {% if post.image%}
+                src="{{post.image.url}}"
+                {% else %}
+                src="https://media.istockphoto.com/id/621109162/es/foto/close-up-concepto-de-tarjeta-de-felicitaci%C3%B3n-del-tesoro-de-pecho-vintage-abierto.jpg?s=612x612&w=0&k=20&c=dtILFNpuBp4AxBDxaYVcGOg1sWLd2p3DHRqdmSWyHtw="
+            {% endif %}
+          class="img-fluid rounded-start"
+          alt="..."
+        />
+      </div>
+      <div class="col-md-7">
+        <div class="card-body" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+            <div>
+                <h5 class="card-title">{{post.title}}</h5>
+                <p class="card-text">{{post.content}}</p>
+                <p class="card-text">
+                  <small class="text-muted">¿Querés saber más? Contactate!</small>
+                </p>
+            </div>
+          <div style="text-align: end;">
+            <a href="{% url 'post:post_detail' post.id %}" class="btn btn-secondary">Leer mas...</a>
+            {% if user.is_staff %}
+            <a href="{% url 'post:post_update' post.id %}" class="btn btn-primary">Actualizar</a>
+            <a href="{% url 'post:post_delete' post.id %}" class="btn btn-danger">Eliminar</a>
+            {% endif %}
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  {% endfor %}
+
+  {% else %}
+  <p class="fs-4 fst-italic">No hay registros ingresados</p>
+    
+  {% endif %}
+
+  
+</div>
+
+<div class="d-grid gap-3">
+    {% include 'post/index_back.html' %}
+</div>
+{% endblock content_post %}

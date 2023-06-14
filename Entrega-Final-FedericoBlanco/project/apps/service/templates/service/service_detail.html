@@ -1,0 +1,63 @@
+{% extends 'service/index.html' %} {% block content_service %}
+
+<h3>Detalle del Servicio</h3>
+
+<div class="card" style="width: 22rem; padding: 0rem; margin: 1rem">
+  <img
+    {%
+    if
+    service.image%}
+    src="{{service.image.url}}"
+    {%
+    else
+    %}
+    src="https://media.istockphoto.com/id/621109162/es/foto/close-up-concepto-de-tarjeta-de-felicitaci%C3%B3n-del-tesoro-de-pecho-vintage-abierto.jpg?s=612x612&w=0&k=20&c=dtILFNpuBp4AxBDxaYVcGOg1sWLd2p3DHRqdmSWyHtw="
+    {%
+    endif
+    %}class="card-img-top"
+    alt="example"
+  />
+  <div
+    class="card-body"
+    style="
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    "
+  >
+    <div style="padding-bottom: 1rem">
+      <h5 class="card-title">{{service.name}}</h5>
+      <p class="card-text">{{service.description}}</p>
+      <p class="card-text">Vendedor: {{service.owner.username}}</p>
+      <p class="card-text">Ultima modificación: {{service.last_actualization}}</p>
+      <p class="card-text" style="text-align: end">
+        <strong>$ {{service.price}}</strong>
+      </p>
+    </div>
+    {% if user.is_staff %}
+    <div style="text-align: center">
+      <a
+        href="{% url 'service:service_update' service.id %}"
+        class="btn btn-primary"
+        >Actualizar</a
+      >
+      <a
+        href="{% url 'service:service_delete' service.id %}"
+        class="btn btn-danger"
+        >Eliminar</a
+      >
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<div class="d-grid gap-3" style="margin: 1rem">
+  {% include 'service/index_back.html' %}
+</div>
+<div class="d-grid gap-3" style="margin: 1rem">
+  <a href="{% url 'service:service_list' %}" class="btn btn-info"
+    >Volver a la <strong> lista de servicios</strong></a
+  >
+</div>
+
+{% endblock content_service %}
